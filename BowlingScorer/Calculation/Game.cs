@@ -3,8 +3,11 @@ namespace BowlingScorer.Calculation
 {
 	public class Game
 	{
-		public Game()
+		private object game;
+
+		public Game(uint players, String[] names)
 		{
+
 		}
 	}
 }

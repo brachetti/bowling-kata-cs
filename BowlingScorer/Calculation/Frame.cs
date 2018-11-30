@@ -1,21 +1,34 @@
 ﻿using System;
 namespace BowlingScorer.Calculation
 {
-    public class Frame
-    {
-		public Frame()
-		{
+	public class Frame
+	{
+		public Frame(byte roll1) : this(roll1, null) { }
+
+		public Frame(byte roll1, byte? roll2) : this(roll1, roll2, null) {}
+
+		public Frame(byte roll1, byte? roll2, byte? roll3)
+        {
+            Roll1 = roll1;
+            Roll2 = roll2;
+            Roll3 = roll3;
+			Rolls = new byte?[3] {
+				roll1, roll2, roll3
+			};
 		}
 
-		public Frame(int roll1, int? roll2, int? roll3)
-        {
-            this.roll1 = roll1;
-            this.roll2 = roll2;
-            this.roll3 = roll3;
-        }
+        public byte Roll1 { get; }
+        public byte? Roll2 { get; }
+        public byte? Roll3 { get; }
 
-        public int roll1 { get; }
-        public int? roll2 { get; }
-        public int? roll3 { get; }
-    }
+		public byte?[] Rolls { get; private set; }
+
+		public byte? this[int index]
+		{
+			get
+			{
+				return Rolls[index];
+			}
+		}
+	}
 }
