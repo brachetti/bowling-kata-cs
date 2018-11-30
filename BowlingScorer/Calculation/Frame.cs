@@ -19,16 +19,13 @@ namespace BowlingScorer.Calculation
 
         public byte Roll1 { get; }
         public byte? Roll2 { get; }
+
+        public bool JustStrike => Roll1 == 10 && !Roll2.HasValue && !Roll3.HasValue;
+
         public byte? Roll3 { get; }
 
 		public byte?[] Rolls { get; private set; }
 
-		public byte? this[int index]
-		{
-			get
-			{
-				return Rolls[index];
-			}
-		}
+		public byte? this[int index] => Rolls[index];
 	}
 }
