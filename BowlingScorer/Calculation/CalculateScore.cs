@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace BowlingScorer.Calculation
 {
@@ -16,18 +15,31 @@ namespace BowlingScorer.Calculation
 
 			foreach (Frame frame in frames)
 			{
-				state = increaseScore(frame.Roll1, state);
-				state = increaseScore(frame.Roll2, state);
+				state = IncreaseScore(frame.Roll1, state);
+				state = IncreaseScore(frame.Roll2, state);
+				state = RealizeSpareSituation(frame, state);
 			}
 
 			return state.Score;
 		}
 
-		private static State increaseScore(byte? roll, State state)
+        private static State RealizeSpareSituation(Frame frame, State state)
+        {
+            if (frame.Roll1 + frame.Roll2 == 10) {
+				return new State {
+					Score = state.Score,
+					DoubleUp = (byte)(state.DoubleUp + 1)
+				};
+			}
+
+			return state;
+        }
+
+        private static State IncreaseScore(byte? roll, State state)
 		{
-			return new State { 
-				Score = (byte)(state.Score + roll),
-				DoubleUp = state.DoubleUp
+			return new State {
+				Score = (byte)(state.Score + roll + (state.DoubleUp > 0 ? roll : 0)),
+				DoubleUp = (byte)Math.Max(0, state.DoubleUp - 1)
 			};
 		}
 
