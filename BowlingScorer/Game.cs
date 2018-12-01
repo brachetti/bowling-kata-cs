@@ -1,5 +1,5 @@
 using System;
-namespace BowlingScorer.Calculation
+namespace BowlingScorer
 {
 	public class Game
 	{

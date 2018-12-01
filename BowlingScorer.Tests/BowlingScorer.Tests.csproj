@@ -19,8 +19,15 @@
 
   <ItemGroup>
     <Folder Include="Calculation\" />
+    <Folder Include="Validation\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Validation\Validator.Tests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Validation\Validator.Tests.cs" />
   </ItemGroup>
 </Project>

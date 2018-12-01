@@ -14,4 +14,7 @@
   <ItemGroup>
     <Folder Include="Calculation\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Validation\Validation.cs" />
+  </ItemGroup>
 </Project>
